@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+
+npm install
+export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
+export HUBOT_FABRIC_MAPPING="portal=/home/staff/uploader/kawaz.org/fabfile.py&redmine=/home/staff/uploader/redmine.kawaz.org/fabfile.py&gitlab=/home/staff/uploader/gitlab.kawaz.org/fabfile.py"
+
+export HUBOT_SLACK_TOKEN=GMh8zFTOA6ckoz4ighiu7rpH
+export HUBOT_SLACK_TEAM=kawaz
+export HUBOT_SLACK_BOTNAME=kawaztan
+export PORT=65534
+
+forever start -c coffee node_modules/.bin/hubot --adapter slack
+# node_modules/.bin/hubot --adapter slack
+
+# exec node_modules/.bin/hubot "$@"
